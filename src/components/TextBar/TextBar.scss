@@ -1,0 +1,35 @@
+#textbar-wrapper {
+    height: auto;
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+    padding-left: 1rem;
+    border-radius:1.5rem;
+    background-color: white;
+    box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.301);
+    :focus {
+        outline: solid 1px rgb(218, 218, 218);
+    }
+}
+
+#addButton {
+    user-select: none;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: rgb(128, 20, 201);
+    color: white;
+}
+
+#TextBar {
+    margin-right: 5px;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
