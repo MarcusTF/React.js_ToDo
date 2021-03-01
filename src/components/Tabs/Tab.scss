@@ -1,11 +1,53 @@
+.tabs-wrapper {
+    display: flex;
+    align-content: flex-start;
+    flex-direction: column;
+    flex: auto;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+nav {
+    display: flex;
+    width: 100%;
+}
+
 .tab {
     display: flex;
     flex-direction: column;
+    flex: auto;
+    max-height: 100%;
     background-color: white;
     width: 100%;
-    height: 100%;
-    flex: auto;
     padding: 1rem;
-    box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.301);
+    box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.301);
     overflow-y: scroll;
+}
+
+#todo-tab-btn {
+    cursor: pointer;
+    padding: 1rem;
+    margin: 0 0.5rem;
+    width: 100px;
+    flex-wrap: wrap;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.active-tab{
+    z-index: 2;
+    color: rgb(77, 77, 77);
+    background-color: white;
+}
+.inactive-tab{
+    z-index: 0;
+    background-color: rgb(196, 196, 196);
+    color: rgb(121, 121, 121);
+}
+
+#done-tab-btn {
+    cursor: pointer;
+    border-radius: 10px 10px 0px 0px;
+    padding: 1rem;
+    width: 100px;
+    flex-wrap: wrap;
 }

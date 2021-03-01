@@ -1,5 +1,6 @@
 {
-  "name": "learning-react",
+  "homepage": "https://sandbox.brainkase.com/3",
+  "name": "todo_list",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
