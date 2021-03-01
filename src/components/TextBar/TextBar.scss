@@ -25,6 +25,11 @@
     border-radius: 100%;
     background-color: rgb(128, 20, 201);
     color: white;
+    transition: 200ms;
+    &:hover{
+        background-color: rgb(153, 41, 228);
+        transition: 200ms;
+    }
 }
 
 #TextBar {

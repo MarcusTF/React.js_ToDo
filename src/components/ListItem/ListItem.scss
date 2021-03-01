@@ -1,5 +1,6 @@
 .listItem {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     box-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.301);
     list-style: none;
@@ -10,12 +11,19 @@
     span {
         display: flex;
         align-items: center;
+        max-width: 95%;
     }
     &-text{
+        word-break: break-all;
+        display: flex;
+        text-align: left;
         margin-left: 10px;
     }
 }
 
+.checkboxes{
+    cursor: pointer;
+}
 
 .close-btn {
     user-select: none;
@@ -27,7 +35,10 @@
     width: 1.2rem;
     height: 1.2rem;
     background-color: rgb(143, 0, 0);
-    :hover {
-        background-color: red;
+    transform: rotate(45deg);
+    transition: 200ms;
+    &:hover {
+        transition: 200ms;
+        background-color: rgb(228, 3, 3);
     }
 }

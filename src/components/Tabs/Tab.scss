@@ -25,6 +25,7 @@ nav {
 }
 
 #todo-tab-btn {
+    user-select: none;
     cursor: pointer;
     padding: 1rem;
     margin: 0 0.5rem;
@@ -42,9 +43,13 @@ nav {
     z-index: 0;
     background-color: rgb(196, 196, 196);
     color: rgb(121, 121, 121);
+    &:hover{
+        color: lighten(rgb(121, 121, 121), 10%);
+    }
 }
 
 #done-tab-btn {
+    user-select: none;
     cursor: pointer;
     border-radius: 10px 10px 0px 0px;
     padding: 1rem;

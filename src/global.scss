@@ -1,3 +1,12 @@
+::-webkit-scrollbar {
+  width: 5px;
+  color: transparent;
+  &-thumb{
+    background-color: rgb(204, 204, 204);
+    border-radius: 10px;
+  }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
