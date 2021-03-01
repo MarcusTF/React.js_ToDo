@@ -16,7 +16,7 @@ function App() {
 
   // running count of the ammount of created to-dos so that each to-do has a unique id
   const [idCounter, setIdCounter] = useState(1)
-  
+
   /**
    * checks if the checkbox is checked.
    * if true (meaning it was just checked off), moves the item from the todo array to the done array and removes it from the todo array.
@@ -42,7 +42,7 @@ function App() {
   // when the "X" to the right of an item is clicked this updates the list with a filter to delete it.
   // it runs a check to get the tab id to check which array to filter (that's that parentElement.parentElement.parentElement bit lol).
   const removeListItem = event => {
-    if(event.target.parentElement.parentElement.parentElement.id === "todo-tab") {
+    if (event.target.parentElement.parentElement.parentElement.id === "todo-tab") {
       setTodoList(todoList.filter(item => item.id !== parseInt(event.target.id)))
     } else {
       setDoneList(doneList.filter(item => item.id !== parseInt(event.target.id)))

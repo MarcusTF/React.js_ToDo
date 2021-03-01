@@ -8,7 +8,7 @@ const ListItem = ({ isChecked, className, id, closeBtnKey, innerText, removeList
         <li className={className} id={id}>
             <span>
                 <input className="checkboxes" onChange={checkOffItem} type="checkbox" id={closeBtnKey} defaultChecked={isChecked} checked={isChecked} />
-                <p className={`${className}-text`} style={isChecked ? {textDecoration:"line-through"} : {textDecoration:"none"}}>{innerText}</p>
+                <p className={`${className}-text`} style={isChecked ? { textDecoration: "line-through" } : { textDecoration: "none" }}>{innerText}</p>
             </span>
             <div onClick={removeListItem} className="close-btn" id={closeBtnKey}>+</div>
         </li>

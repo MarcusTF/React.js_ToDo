@@ -10,8 +10,8 @@ const Tab = ({ todoList, removeListItem, doneList, checkOffItem }) => {
         e.target.className = "active-tab" // changes the tab class of the clicked tab to "active-tab"
 
         // checks to see if a previous or next tab exists and sets its class to "inactive-tab"
-        e.target.nextSibling ? (e.target.nextSibling.className = "inactive-tab") : (e.target.previousSibling.className = "inactive-tab") 
-        
+        e.target.nextSibling ? (e.target.nextSibling.className = "inactive-tab") : (e.target.previousSibling.className = "inactive-tab")
+
         // this changes the display style of the the todo and done tabs so that the appropriate one is displayed.
         if (e.target.id === "todo-tab-btn") {
             document.getElementById("todo-tab").style.display = "block"
@@ -26,7 +26,7 @@ const Tab = ({ todoList, removeListItem, doneList, checkOffItem }) => {
     /**
      * this renders both the todo and done lists. I figured keeping both rendered was fine since it's looping through and mapping an array each time it renders, so leaving them
      * in the DOM but hidden when not being viewed was a way to avoid extra re-rendering. Not that it really matters with an app this small, but still.
-     * */ 
+     * */
     return (
         <div className="tabs-wrapper">
             <nav>
