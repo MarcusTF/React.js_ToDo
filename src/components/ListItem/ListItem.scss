@@ -14,7 +14,7 @@
         max-width: 95%;
     }
     &-text{
-        word-break: break-all;
+        overflow-wrap: break-word;
         display: flex;
         text-align: left;
         margin-left: 10px;
