@@ -1,83 +1,50 @@
-import React from 'react';
-import ListItem from "../ListItem/ListItem"
+import React, { useState } from 'react';
+
+import DoneTab from './DoneTab/DoneTab'
+import TodoTab from './TodoTab/TodoTab'
 import "./Tab.scss"
 
-const Tab = ({ todoList, removeListItem, doneList, checkOffItem }) => {
+const Tab = ({ todoList, addTodo, removeTodo }) => {
+    const [doneList, setDoneList] = useState([])
+    const [activeTab, setActiveTab] = useState({ todo: "active-tab", done: "inactive-tab" })
 
-    // not sure if this is the way I should do this. It works and it doesn't re-render the DOM, so I think it's fine?
+
+    const addDone = todo => doneList.push(todo)
+    const removeDone = id => setDoneList(doneList.filter(item => item.id !== id))
+
     const changeTab = e => {
-
-        e.target.className = "active-tab" // changes the tab class of the clicked tab to "active-tab"
-
-        // checks to see if a previous or next tab exists and sets its class to "inactive-tab"
-        e.target.nextSibling ? (e.target.nextSibling.className = "inactive-tab") : (e.target.previousSibling.className = "inactive-tab")
-
-        // this changes the display style of the the todo and done tabs so that the appropriate one is displayed.
         if (e.target.id === "todo-tab-btn") {
-            document.getElementById("todo-tab").style.display = "block"
-            document.getElementById("done-tab").style.display = "none"
+            setActiveTab({ todo: "active-tab", done: "inactive-tab" })
         } else {
-            document.getElementById("done-tab").style.display = "block"
-            document.getElementById("todo-tab").style.display = "none"
+            setActiveTab({ todo: "inactive-tab", done: "active-tab" })
         }
     }
 
+    const markDone = e => {
+        let selectedItem = todoList.filter(item => item.id === +e.target.id)[0]
+        selectedItem.isComplete = true
+        addDone(selectedItem)
+        removeTodo(selectedItem.id)
+    }
 
-    /**
-     * this renders both the todo and done lists. I figured keeping both rendered was fine since it's looping through and mapping an array each time it renders, so leaving them
-     * in the DOM but hidden when not being viewed was a way to avoid extra re-rendering. Not that it really matters with an app this small, but still.
-     * */
+    const markNotDone = e => {
+        let selectedItem = doneList.filter(item => item.id === +e.target.id)[0]
+        selectedItem.isComplete = false
+        addTodo(selectedItem)
+        removeDone(selectedItem.id)
+    }
+
     return (
         <div className="tabs-wrapper">
             <nav>
-                <div className="active-tab" onClick={changeTab} id="todo-tab-btn">ToDo</div>
-                <div className="inactive-tab" onClick={changeTab} id="done-tab-btn">Done</div>
+                <div className={activeTab.todo} id="todo-tab-btn" onClick={changeTab}>ToDo</div>
+                <div className={activeTab.done} id="done-tab-btn" onClick={changeTab}>Done</div>
             </nav>
-            <div className="tab" id="todo-tab">
-                <ul className="todosList" id={`todos-todo-tab`}>{
-
-                    // Mapping the currentListState to ListItem components with their respecive id's
-                    todoList.map(listItem => {
-                        return (
-                            <ListItem
-                                isChecked={false}
-                                key={listItem.id}
-                                className="listItem"
-                                id={`listItem-${listItem.id}`}
-                                removeListItem={removeListItem}
-                                checkOffItem={checkOffItem}
-                                closeBtnKey={listItem.id}
-                                innerText={listItem.value}
-                            />
-                        )
-                    })
-
-                }
-                </ul>
+            <div className='tab'>
+            {   activeTab.todo === "active-tab"
+                ? <TodoTab markDone={markDone} removeTodo={removeTodo} todoList={todoList} />
+                : <DoneTab markNotDone={markNotDone} removeDone={removeDone} doneList={doneList} /> }               
             </div>
-            <div className="tab" id="done-tab" style={{ display: "none" }}>
-                <ul className="todosList" id={`todos-done-tab`}>{
-
-                    // Mapping the doneList to ListItem components with their respecive id's
-                    doneList.map(listItem => {
-                        return (
-                            <ListItem
-                                isChecked={true}
-                                key={listItem.id}
-                                className="listItem"
-                                id={`listItem-${listItem.id}`}
-                                removeListItem={removeListItem}
-                                closeBtnKey={listItem.id}
-                                checkOffItem={checkOffItem}
-                                innerText={listItem.value}
-                            />
-                        )
-                    })
-
-                }
-                </ul>
-            </div>
-
         </div>
     )
 }
